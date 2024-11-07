@@ -35,6 +35,25 @@ db.query(
   }
 );
 
+<<<<<<< HEAD
+=======
+// Crear la tabla 'productos' si no existe----------------
+db.query(
+  `CREATE TABLE IF NOT EXISTS productos 
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  nombre_producto varchar(255) NOT NULL,
+  descrip_producto varchar(255) NOT NULL,
+  valor int(100) NOT NULL,
+  marca varchar(255) NOT NULL,
+  imagen blob NOT NULL
+);`,
+  (err) => {
+    if (err) throw err;
+    console.log("Tabla 'productos' creada o verificada");
+  }
+);
+
+>>>>>>> a9be10abb1666451b8549c46b5dcc81e13990024
 // Crear una instancia de Express
 const app = express();
 const PORT = 3000;
