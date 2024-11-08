@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesion y registro.</title>
+    <link rel="stylesheet" href="usuarios.css" >  
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Inicio de Sesión</h2>
+            <form action="" id="loginForm">
+                <p class="text">Correo Electrónico</p>
+                <input type="email" id="log-email" placeholder="ejemplo@correo.com" required>
+                <p class="text" style="background: white;">Contraseña</p>
+                <input type="password" id="log-password" placeholder="Ingresa tu contraseña" required>
+                <button type="submit">Iniciar Sesion</button>
+                <button type="submit">Registrase</button>
+                <p><a href="#">Olvidaste tu contraseña</a></p>
+            </form>
+        </div>
+        <p id="message"></p>
+    </div>
+    <script src="usuarios.js"></script>
+</body>
+</html>
