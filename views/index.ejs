@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReseñaPlus</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+    <!-- Encabezado con el logo y botones -->
+    <header class="d-flex justify-content-between align-items-center p-3">
+        <h1>ReseñaPlus</h1>
+        <div>
+            <button class="btn btn-outline-primary mr-2">Iniciar Sesión</button>
+            <button class="btn btn-primary">Registrarse</button>
+        </div>
+    </header>
+
+    <!-- Carrusel -->
+    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Imagen 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+
+    <!-- Sección de Bienvenida -->
+    <section class="text-center mt-4">
+        <h2>¡Bienvenid@ a ReseñaPlus!</h2>
+        <p>Aquí podrás explorar reseñas y calificaciones de productos en tendencia para ayudarte a decidir.</p>
+    </section>
+
+
+    <!-- Sección de Productos -->
+    <div class="container mt-5">
+        <h3 class="text-center">Productos</h3>
+        <div class="row">
+            <% products.forEach((product)=> { %>
+                <!-- Ejemplo de tarjeta de producto -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= product.nombre_producto %>
+                            </h5>
+                            <p class="card-text">
+                                <%= product.descrip_producto %>
+                            </p>
+                            <p class="card-text">
+                                <%= product.valor %>
+                            </p>
+                            <a href="#" class="btn btn-success">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+                    <!-- Repetir las tarjetas de producto según se requiera -->
+        </div>
+    </div>
+
+    <!-- JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
