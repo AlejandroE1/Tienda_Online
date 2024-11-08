@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productsRouter = require('./products.router')
-const calificacionesRouter = require('./calificaciones.router')
+const qualificationsRouter = require('./qualifications.router')
 
 router.get('/', (req, res) => {
 
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/products', productsRouter);
-//router.use('/calificaciones', calificacionesRouter);
+router.use('/qualifications', qualificationsRouter);
 //router.use('/usuarios', usuariosRouter);
 
 

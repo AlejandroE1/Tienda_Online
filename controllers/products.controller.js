@@ -13,20 +13,20 @@ exports.getAllproducts = (req, res) => {
 
 exports.createOneProduct = (req, res) => {
 
-    const { nombre_producto, descrip_producto, valor, marca } = req.body;
-    if (nombre_producto, descrip_producto, valor, marca) {
+    const { nombre_producto, descrip_producto, valor, marca, imagen, id_usuario } = req.body;
+    if (nombre_producto, descrip_producto, valor, marca, imagen, id_usuario) {
 
         const sql =
-            "INSERT INTO productos (nombre_producto, descrip_producto, valor, marca) VALUES (?, ?, ?, ?)";
+            "INSERT INTO productos (nombre_producto, descrip_producto, valor, marca, imagen, id_usuario) VALUES (?, ?, ?, ?)";
         conexion.query(
             sql,
-            [nombre_producto, descrip_producto, valor, marca],
+            [nombre_producto, descrip_producto, valor, marca, imagen, id_usuario],
             (err, result) => {
                 if (err) {
-                    res.status(500).send("Error al crear producto");
+                    res.status(500).send("Error al crear el producto");
                     return;
                 }
-                res.status(201).json({ id: result.insertId, nombre_producto, descrip_producto, valor, marca, });
+                res.status(201).json({ id: result.insertId, nombre_producto, descrip_producto, valor, marca, imagen, id_usuario, });
             }
         );
 
@@ -43,11 +43,11 @@ exports.getOneProduct = (req, res) => {
     const sql = "SELECT * FROM productos WHERE id = ?";
     conexion.query(sql, [id], (err, results) => {
         if (err) {
-            res.status(500).send("Error al obtener producto");
+            res.status(500).send("Error al obtener el producto");
             return;
         }
         if (results.length === 0) {
-            res.status(404).send("producto no encontrado");
+            res.status(404).send("Producto no encontrado");
             return;
         }
         res.json(results[0]);
@@ -57,26 +57,26 @@ exports.getOneProduct = (req, res) => {
 
 exports.updateOneProduct = (req, res) => {
 
+    const { id } = req.params;
+    const { nombre_producto, descrip_producto, valor, marca, imagen, id_usuario } = req.body;
 
-    const { nombre_producto, descrip_producto, valor, marca } = req.body;
-
-    if (nombre_producto, descrip_producto, valor, marca) {
+    if (nombre_producto, descrip_producto, valor, marca, imagen, id_usuario) {
 
         const sql =
-            "UPDATE productos SET nombre_producto = ?, descrip_producto = ?, valor = ?, marca = ? WHERE id = ?";
+            "UPDATE productos SET nombre_producto = ?, descrip_producto = ?, valor = ?, marca = ? imagen = ?, id_usuario = ? WHERE id = ?";
         conexion.query(
             sql,
-            [nombre_producto, descrip_producto, valor, marca, req.params.id],
+            [nombre_producto, descrip_producto, valor, marca, imagen, id_usuario, id],
             (err, result) => {
                 if (err) {
-                    res.status(500).send("Error al actualizar producto");
+                    res.status(500).send("Error al actualizar el producto");
                     return;
                 }
                 if (result.affectedRows === 0) {
-                    res.status(404).send("producto no encontrado");
+                    res.status(404).send("Producto no encontrado");
                     return;
                 }
-                res.json({ id: req.params.id, nombre_producto, descrip_producto, valor, marca, });
+                res.json({ id, nombre_producto, descrip_producto, valor, marca, imagen, id_usuario, });
             }
         );
     } else {
@@ -90,9 +90,9 @@ exports.deleteOneProduct = (req, res) => {
     const { id } = req.params;
 
     const sql = "DELETE FROM productos WHERE id = ?";
-    conexion.query(sql, [req.params.id], (err, result) => {
+    conexion.query(sql, [id], (err, result) => {
         if (err) {
-            res.status(500).send("Error al eliminar producto");
+            res.status(500).send("Error al eliminar el producto");
             return;
         }
         if (result.affectedRows === 0) {
