@@ -35,8 +35,6 @@ db.query(
   }
 );
 
-<<<<<<< HEAD
-=======
 // Crear la tabla 'productos' si no existe----------------
 db.query(
   `CREATE TABLE IF NOT EXISTS productos 
@@ -53,7 +51,6 @@ db.query(
   }
 );
 
->>>>>>> a9be10abb1666451b8549c46b5dcc81e13990024
 // Crear una instancia de Express
 const app = express();
 const PORT = 3000;
