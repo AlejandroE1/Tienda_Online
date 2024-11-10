@@ -15,3 +15,5 @@ router.put('/:id', usersController.updateOneUser);
 router.delete('/:id', usersController.deleteOneUser);
 
 module.exports = router;
+
+router.get('/productos/:id', usersController.productsUser);

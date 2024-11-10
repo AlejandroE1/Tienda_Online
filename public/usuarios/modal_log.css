@@ -1,0 +1,111 @@
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+  }
+
+  #loginForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    z-index: 1001;
+    display: none;
+  }
+
+  #loginForm h2 {
+    color: #1b5e20;
+    font-size: 24px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .popup h2 {
+    color: #1b5e20;
+    font-size: 24px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* #loginForm label {
+    display: block;
+    color: #00695C;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+  } */
+
+  #loginForm input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    background-color: #F5F5F5;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  /* #loginForm input:focus {
+    outline: none;
+    border-color: #00897B;
+    background-color: #E0F2F1;
+  } */
+
+
+
+  #loginForm button:hover {
+    background-color: #004D40;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1rem 0;
+    color: #757575;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .divider span {
+    padding: 0 10px;
+  }
+
+  .register-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #E8F5E9;
+    color: #00695C;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 0.5rem;
+  }
+
+  .register-button:hover {
+    background-color: #C8E6C9;
+  }
+
+  .terms-text {
+    font-size: 12px;
+    color: #757575;
+    text-align: center;
+    margin-top: 1rem;
+  }
