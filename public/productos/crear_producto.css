@@ -1,0 +1,33 @@
+#formContainer{
+    width: 50%; 
+    font-family: inter;
+    background-color: #DCFCE7;
+    padding: 3rem;
+    border-radius: 2rem;
+    color: #059669;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+ .titulo{
+     color: #064E3B;
+     text-align: center;
+     padding-bottom: 1rem;
+     font-weight: bold;
+     font-size: 2.5rem;
+ }
+ .form-control{
+     background-color: #ECFDF5;
+     border-color: #A7F3D0;
+ }
+ #imagen{
+     background-color:#DCFCE7 ;
+     border-color: #DCFCE7;
+ }
+ body{
+     background-color: #ECFDF5;
+ }
+ .boton{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding-top: 2rem;
+ }
