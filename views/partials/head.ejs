@@ -1,0 +1,25 @@
+<!-- Head template -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReseñaPlus</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="/productos/inicio.css">
+<link rel="stylesheet" href="/usuarios/modal_reg.css">
+<link rel="stylesheet" href="/usuarios/modal_log.css">
+<script src="/usuarios/cookies.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if(document.cookie.split('=')[0] === 'Usuario'){
+            document.getElementById('loginDetails').classList.remove('d-none');
+        }else{
+            document.getElementById('loginButtons').classList.remove('d-none');
+        }
+        document.getElementById('logOut').addEventListener('click', function (){                
+            document.cookie='Usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            window.location.href = '/products';
+
+        })
+    })
+</script>

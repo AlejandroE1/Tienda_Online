@@ -1,0 +1,16 @@
+<!-- Encabezado con el logo y botones -->
+<header class="d-flex justify-content-between align-items-center p-3 stick">
+    <a href="/products/"><img src="/imagenes/LOGO2.png" alt="Logo" width="350"></a>
+    <div id="loginDetails" class="d-none">
+        <form action="/usuarios/productos" method="GET">
+            <button type="submit" class="btn btn-outline-primary mr-2">Mis productos</button>
+        </form>
+        <form action="/products/#" method="GET">
+            <button type="submit" id="logOut" class="btn btn-primary">Log Out</button>
+        </form>
+    </div>
+    <div id="loginButtons" class="d-none">
+        <button id="loginBtn" class="btn btn-outline-primary mr-2">Iniciar Sesión</button>
+        <button class="btn btn-primary" onclick="openPopup()">Registrarse</button>
+    </div>
+</header>

@@ -1,0 +1,40 @@
+<!-- Formulario de inicio de sesión -->
+
+<div id="overlay"></div>
+<div id="loginForm" class="popup">
+  <h2>Iniciar Sesión</h2>
+  <form id="login-form" action="/usuarios/login" method="POST">
+    <label for="nickname">Nickname</label>
+    <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Ej: juanperez" required>
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="Ej: asofh244" required>
+    <button type="submit" class="btn btn-success w-100 mt-3">Ingresar</button>
+
+  </form>
+  <p>Al continuar, aceptas nuestros Términos y Política de Privacidad.</p>
+</div>
+
+<!-- Form registrarse -->
+ 
+<div class="popup-overlay" id="popup-overlay">
+    <div class="popup">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <h2>Registrarse</h2>
+        <form id="registration-form" action="/usuarios/register" method="POST">
+            <label for="nombres">Nombres</label>
+            <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Ej: Juan" required pattern="[A-Za-zÀ-ÿ\s]+" title="Solo letras permitidas">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Ej: Perez" required pattern="[A-Za-zÀ-ÿ\s]+" title="Solo letras permitidas">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@correo.com" required>
+            <label for="telefono">Teléfono</label>
+            <input type="number" id="telefono" name="telefono" class="form-control" placeholder="1234567890" required pattern="[0-9]{10}" title="Debe ser un número de 10 dígitos">
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Ej: juanperez" required>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Ej: asofh244" required>
+            <button type="submit" class="btn btn-success w-100 mt-3">Registrarse</button>
+        </form>
+        <p>Al continuar, aceptas nuestros Términos y Política de Privacidad.</p>
+    </div>
+</div>
