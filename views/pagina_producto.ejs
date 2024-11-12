@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone 15 Pro Max - Reseñas</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/productos/inicio.css">
     <link rel="stylesheet" href="/calificaciones/cal_producto.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if(document.cookie.split('=')[0] === 'Usuario'){
-                document.getElementById('loginDetails').innerHTML = `
-                <p>Bienvenido usuario # ${document.cookie.split('=')[1]}</p>`
-            }else{
-                 document.getElementById('loginDetails').innerHTML = `
-                <button id="loginBtn" class="btn btn-outline-primary mr-2">Iniciar Sesión</button>
-                <button class="btn btn-primary" onclick="openPopup()">Registrarse</button>`
-            }
-        })
-    </script>
+    <%- include('partials/head') %>
+
 </head>
 <body>
 <!-- Encabezado con el logo y botones -->
-<header class="d-flex justify-content-between align-items-center p-3">
-    <!-- Enlace al inicio de productos con el logo -->
-    <a href="/products/"><img src="/imagenes/LOGO2.png" alt="Logo" width="350"></a>
-    <div id="loginDetails"></div>
-</header>
+<%- include('partials/header') %>
 
 <!-- Título del producto -->
 <h1 class="product-header"><%= product.nombre_producto %></h1>
@@ -43,14 +24,14 @@
             <p>Imagen no disponible</p>
         <% } %>
     </div>
-    <div class="main-text row align-items-center" style="height: 30vh">
+    <div class="main-text row align-items-center" style="height: 30vh; color: #444444;">
         <div class="col-6 text-center display-3">
             <%= product.califProm %>
         </div>
         <div class="col-6 text-center display-4">            
             <strong>$<%= product.valor %></strong>
         </div>
-        <div class="col-12 text-center display-5 font-italic" style="font-size: 3.5vh"> 
+        <div class="col-12 text-center display-5 font-italic" style="font-size: 2.5vh"> 
         <br>
         <%= product.descrip_producto %>
         <br>
@@ -112,7 +93,15 @@
 </form>
 </div>
 
+<!-- Formulario Login y registro -->
+<%- include('partials/log_reg') %>
+
+<!-- Pie de página -->
+<%- include('partials/footer') %>
+
 <!-- Script para manejar las calificaciones -->
 <script src="/calificaciones/calificacion.js"></script>
+<script src="/usuarios/modal_reg.js"></script>
+<script src="/usuarios/modal_log.js"></script>
 </body>
 </html>

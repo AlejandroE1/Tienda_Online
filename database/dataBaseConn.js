@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 
 const conexion = mysql.createConnection({
-    host: '192.168.20.26',
+    host: 'localhost',
     user: 'root',
     password: '',
     database: 'tienda'
@@ -23,7 +23,9 @@ conexion.query(
     email varchar(255) NOT NULL,
     telefono int(10) NOT NULL,
     nickname varchar(255) NOT NULL,
-    fecha_creacion datetime NOT NULL DEFAULT current_timestamp());`,
+    password varchar(500) NOT NULL,
+    fecha_creacion datetime NOT NULL DEFAULT current_timestamp()
+    );`,
     (err) => {
         if (err) throw err;
         console.log("Tabla 'usuarios' creada o verificada");

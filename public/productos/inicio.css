@@ -104,6 +104,34 @@ section.text-center p {
     border-color: #1b5e20;
 }
 
+.stick {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#loginDetails {
+    display: inline-flex;
+}
+
+/* Footer */
+
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.footer .social-icons a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.footer .social-icons a:hover {
+    color: #007bff;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     header h1 {

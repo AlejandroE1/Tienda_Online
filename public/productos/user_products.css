@@ -48,7 +48,7 @@ section.text-center p {
     color: #064E3B;
     font-weight: bold;
     margin-bottom: 1.5rem;
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .card {

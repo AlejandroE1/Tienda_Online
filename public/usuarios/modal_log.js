@@ -22,8 +22,4 @@ overlay.addEventListener('click', () => {
   }, 300);  // Espera a que termine la animación antes de ocultar
 });
 
-// Redirección al sitio de autenticación de Google al hacer clic en el botón
-googleLoginBtn.addEventListener('click', () => {
-  window.location.href = 'https://accounts.google.com/signin';
-});
 
