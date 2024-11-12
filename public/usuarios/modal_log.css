@@ -45,7 +45,7 @@
     font-size: 14px;
   } */
 
-  #loginForm input {
+  /* #loginForm input {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 1rem;
@@ -54,7 +54,7 @@
     background-color: #F5F5F5;
     box-sizing: border-box;
     font-size: 14px;
-  }
+  } */
 
   /* #loginForm input:focus {
     outline: none;

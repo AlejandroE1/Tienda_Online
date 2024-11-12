@@ -56,6 +56,7 @@ section.text-center p {
     border-radius: 8px;
     transition: transform 0.2s ease-in-out;
     background-color: rgb(255, 255, 255);
+    width: 1200px;
 }
 
 .card:hover {
