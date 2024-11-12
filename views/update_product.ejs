@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/productos/inicio.css">
+</head>
+
+<body>
+    <!-- Encabezado con el logo y botones -->
+    <header class="d-flex justify-content-between align-items-center p-3">
+        <!-- Enlace al inicio de productos con el logo -->
+        <a href="/products/"><img src="/imagenes/LOGO2.png" alt="Logo" width="350"></a>
+    </header>
+
+    <div class="container mt-5">
+        <h2>Editar Producto</h2>
+        <!-- Formulario para actualizar un producto -->
+        <form id="update-product-form" action="/products/editarproducto/<%= product.id %>" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre_producto">Nombre del Producto</label>
+                <input type="text" id="nombre_producto" name="nombre_producto" class="form-control" value="<%= product.nombre_producto %>" required>
+            </div>
+            <div class="form-group">
+                <label for="descrip_producto">Descripción del Producto</label>
+                <textarea id="descrip_producto" name="descrip_producto" class="form-control" required><%= product.descrip_producto %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor</label>
+                <input type="number" id="valor" name="valor" class="form-control" value="<%= product.valor %>" required>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <input type="text" id="marca" name="marca" class="form-control" value="<%= product.marca %>" required>
+            </div>
+            <div class="form-group">
+                <label for="imagen">Imagen</label>
+                <input type="file" id="imagen" name="imagen" class="form-control">
+                <% if (product.imagen) { %>
+                    <!-- Mostrar la imagen del producto si existe -->
+                    <img src="data:image/jpeg;base64,<%= product.imagen %>" alt="Producto" class="img-fluid mt-2">
+                <% } %>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+    <br>
+</body>
+
+</html>

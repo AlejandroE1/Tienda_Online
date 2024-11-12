@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const qualificationsController = require('../controllers/qualifications.controller')
+const qualificationsController = require('../controllers/qualifications.controller');
 
-//Pagina principal de Qualifications
+// Página principal de calificaciones
 router.get('/', qualificationsController.getAllQualifications);
 
-//Página de creación de Qualifications
+// Página de creación de calificaciones
 router.post('/', qualificationsController.createOneQualification);
 
 router.get('/:id', qualificationsController.getOneQualification);

@@ -6,31 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReseñaPlus</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
+    <link rel="stylesheet" href="/productos/inicio.css">
+    <link rel="stylesheet" href="/usuarios/modal_reg.css">
+    <link rel="stylesheet" href="/usuarios/modal_log.css">
+    <script src="/usuarios/cookies.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if(document.cookie.split('=')[0] === 'Usuario'){
+                document.getElementById('loginDetails').classList.remove('d-none');
+            }else{
+                document.getElementById('loginButtons').classList.remove('d-none');
+            }
+            document.getElementById('logOut').addEventListener('click', function (){                
+                document.cookie='Usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                window.location.href = '/products';
 
+            })
+        })
+    </script>
+</head>
 <body>
 
-    <!-- Encabezado con el logo y botones -->
-    <header class="d-flex justify-content-between align-items-center p-3">
-        <h1>ReseñaPlus</h1>
-        <div>
-            <button class="btn btn-outline-primary mr-2">Iniciar Sesión</button>
-            <button class="btn btn-primary">Registrarse</button>
-        </div>
-    </header>
+
+<!-- Encabezado con el logo y botones -->
+ <header class="d-flex justify-content-between align-items-center p-3">
+    <a href="/products/"><img src="/imagenes/LOGO2.png" alt="Logo" width="350"></a>
+    <div id="loginDetails" class="d-none">
+        <form action="/usuarios/productos" method="GET">
+            <button type="submit" class="btn btn-primary" >Mis productos</button>
+        </form>
+        <form action="/products/#" method="GET"></form>
+            <button type="submit" id="logOut" class="btn btn-primary" >Log Out</button>
+        </form>
+    </div>
+    <div id="loginButtons" class="d-none">
+        <button id="loginBtn" class="btn btn-outline-primary mr-2">Iniciar Sesión</button>
+        <button class="btn btn-primary" onclick="openPopup()">Registrarse</button>
+    </div>
+  </header>
 
     <!-- Carrusel -->
     <div id="carouselExample" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Imagen 1">
+                <img src="/imagenes/imagepc.jpg" class="d-block w-100" alt="Imagen 1">
             </div>
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Imagen 2">
+                <img src="/imagenes/Carousel.png" class="d-block w-100" alt="Imagen 2">
             </div>
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Imagen 3">
+                <img src="/imagenes/imagepc.jpg" class="d-block w-100" alt="Imagen 3">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
@@ -56,9 +81,9 @@
         <div class="row">
             <% products.forEach((product)=> { %>
                 <!-- Ejemplo de tarjeta de producto -->
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-3">
                     <div class="card">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto">
+                        <img src="<%= product.imagen %>" class="card-img-top" alt="Producto">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <%= product.nombre_producto %>
@@ -67,9 +92,9 @@
                                 <%= product.descrip_producto %>
                             </p>
                             <p class="card-text">
-                                <%= product.valor %>
+                                $<%= product.valor %>
                             </p>
-                            <a href="#" class="btn btn-success">Ver más</a>
+                            <a href="/products/<%= product.id %>" class="btn btn-success">Ver más</a>
                         </div>
                     </div>
                 </div>
@@ -78,10 +103,57 @@
         </div>
     </div>
 
+
+
+<!-- Formulario de inicio de sesión -->
+<div id="overlay"></div>
+<div id="loginForm" class="popup">
+  <h2>Iniciar Sesión</h2>
+  <form id="login-form" action="/usuarios/login" method="POST">
+    <label for="nickname">Nickname</label>
+    <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Ej: juanperez" required>
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" class="form-control" required>
+    <button type="submit" class="btn btn-success w-100 mt-3">Ingresar</button>
+
+  </form>
+  <p>Al continuar, aceptas nuestros Términos y Política de Privacidad.</p>
+</div>
+
+<!-- Form registrarse -->
+<div class="popup-overlay" id="popup-overlay">
+    <div class="popup">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <h2>Registrarse</h2>
+        <form id="registration-form" action="/usuarios/register" method="POST">
+            <label for="nombres">Nombres</label>
+            <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Ej: Juan" required pattern="[A-Za-zÀ-ÿ\s]+" title="Solo letras permitidas">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Ej: Perez" required pattern="[A-Za-zÀ-ÿ\s]+" title="Solo letras permitidas">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@correo.com" required>
+            <label for="telefono">Teléfono</label>
+            <input type="number" id="telefono" name="telefono" class="form-control" placeholder="1234567890" required pattern="[0-9]{10}" title="Debe ser un número de 10 dígitos">
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Ej: juanperez" required>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+            <button type="submit" class="btn btn-success w-100 mt-3">Registrarse</button>
+        </form>
+        <p>Al continuar, aceptas nuestros Términos y Política de Privacidad.</p>
+    </div>
+</div>
+
+
     <!-- JavaScript de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript personalizado -->
+    <script src="/usuarios/modal_reg.js"></script>
+    <script src="/usuarios/modal_log.js"></script>
+    
 </body>
 
 </html>

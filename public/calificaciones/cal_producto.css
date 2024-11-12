@@ -1,0 +1,235 @@
+.product-header {
+    text-align: center;
+    color: #006241;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.rating-header {
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: #333;
+}
+
+.main-review {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    gap: 2rem;
+}
+
+.main-image {
+    flex: 1;
+    max-width: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.main-text {
+    flex: 1;
+    color: #00a878;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.user-reviews {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.review-card {
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.review-card .username {
+    color: #006241;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.review-card .review-content {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.review-card .rating {
+    color: #006241;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .main-review {
+        flex-direction: column;
+    }
+
+    .user-reviews {
+        grid-template-columns: 1fr;
+    }
+}
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .pagination-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #e8f8f3;
+            border: none;
+            border-radius: 4px;
+            color: #006241;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .pagination-numbers {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .pagination-numbers span {
+            color: #006241;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .pagination-numbers span.active {
+            font-weight: bold;
+        }
+        
+        /* Rating Section Styles */
+        .rating-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .rating-title {
+            color: #00a878;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .star-rating svg {
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+        }
+        
+        .review-title {
+            color: #00a878;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .review-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: #005537;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: #004429;
+        }
+
+        .star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.star-rating svg {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star-rating svg path {
+    transition: all 0.2s ease;
+}
+
+.star-rating svg.filled path {
+    fill: #FFD700;
+    stroke: #FFD700;
+}
+
+/* Remove the previous hover rules and add these new ones */
+.star-rating svg:hover path {
+    fill: #FFD700;
+    stroke: #FFD700;
+}
+
+.star-rating svg:hover ~ svg path {
+    fill: none;
+    stroke: currentColor;
+}
+
+/* When hovering the container, reset all stars */
+.star-rating:hover svg path {
+    fill: none;
+    stroke: currentColor;
+}
+
+/* Style for stars before the hovered one */
+.star-rating svg:hover,
+.star-rating svg:has(~ svg:hover) {
+    path {
+        fill: #FFD700;
+        stroke: #FFD700;
+    }
+}

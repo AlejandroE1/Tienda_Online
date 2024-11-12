@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 15 Pro Max - Reseñas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/productos/inicio.css">
+    <link rel="stylesheet" href="/calificaciones/cal_producto.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if(document.cookie.split('=')[0] === 'Usuario'){
+                document.getElementById('loginDetails').innerHTML = `
+                <p>Bienvenido usuario # ${document.cookie.split('=')[1]}</p>`
+            }else{
+                 document.getElementById('loginDetails').innerHTML = `
+                <button id="loginBtn" class="btn btn-outline-primary mr-2">Iniciar Sesión</button>
+                <button class="btn btn-primary" onclick="openPopup()">Registrarse</button>`
+            }
+        })
+    </script>
+</head>
+<body>
+<!-- Encabezado con el logo y botones -->
+<header class="d-flex justify-content-between align-items-center p-3">
+    <!-- Enlace al inicio de productos con el logo -->
+    <a href="/products/"><img src="/imagenes/LOGO2.png" alt="Logo" width="350"></a>
+    <div id="loginDetails"></div>
+</header>
+
+<!-- Título del producto -->
+<h1 class="product-header"><%= product.nombre_producto %></h1>
+<div class="rating-header"></div>
+
+<!-- Sección principal de la reseña -->
+<div class="main-review">
+    <div class="main-image">
+        <% if (product.imagen) { %>
+            <!-- Mostrar la imagen del producto si existe -->
+            <img src="data:image/jpeg;base64,<%= product.imagen %>" alt="<%= product.titulo %>">
+        <% } else { %>
+            <!-- Mostrar mensaje si la imagen no está disponible -->
+            <p>Imagen no disponible</p>
+        <% } %>
+    </div>
+    <div class="main-text row align-items-center" style="height: 30vh">
+        <div class="col-6 text-center display-3">
+            <%= product.califProm %>
+        </div>
+        <div class="col-6 text-center display-4">            
+            <strong>$<%= product.valor %></strong>
+        </div>
+        <div class="col-12 text-center display-5 font-italic" style="font-size: 3.5vh"> 
+        <br>
+        <%= product.descrip_producto %>
+        <br>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de reseñas de usuarios -->
+<div class="user-reviews">
+    <% qualifications.forEach(qualification => { %>
+    <div class="review-card">
+        <div class="username">@<%= qualification.nickname %></div>
+        <div class="review-content">
+            <%= qualification.detalles %>
+        </div>
+        <div class="rating">Calificación: <%= qualification.calificacion %></div>
+    </div>
+    <% }) %>
+</div>
+
+<!-- Sección para añadir una nueva calificación -->
+<div class="rating-container">
+    <h2 class="rating-title">Calificación</h2>
+    <div class="star-rating" id="starRating">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" data-rating="1">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" data-rating="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" data-rating="3">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" data-rating="4">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" data-rating="5">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+    </div>
+    
+    <form id="RegisterQualification-form" action="/qualifications/" method="POST">
+    <!-- Input oculto para almacenar el valor de la calificación -->
+    <input type="hidden" id="ratingValue" name="ratingValue" value="0">
+    <input type="hidden" id="productId" name="productId" value= " <%= product.id %> ">
+
+    <h2 class="review-title">Reseña</h2>
+    <textarea 
+        class="review-textarea" 
+        placeholder="Cuéntanos tu experiencia con el producto en no más de 500 caracteres"
+        maxlength="500"
+        id="quealificationDetails"
+        name="quealificationDetails"
+    ></textarea>
+
+    <button class="submit-button" onclick="submitReview()">
+        Añadir calificación
+    </button>
+</form>
+</div>
+
+<!-- Script para manejar las calificaciones -->
+<script src="/calificaciones/calificacion.js"></script>
+</body>
+</html>

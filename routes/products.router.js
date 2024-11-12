@@ -1,16 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const productsController = require('../controllers/products.controller')
+const productsController = require('../controllers/products.controller');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
-//Pagina principal de productos
+// Página principal de productos
 router.get('/', productsController.getAllproducts);
 
-//Página de creación de producto
-router.post('/', productsController.createOneProduct);
+// Página de creación de producto
+router.get('/crearproducto', productsController.renderCreateProductPage);
+
+router.post('/crearproducto', upload.single('imagen'), productsController.createOneProduct);
+
+// Página de edición de producto
+router.get('/editarproducto/:id', productsController.renderUpdateProductPage);
+router.post('/editarproducto/:id', upload.single('imagen'), productsController.updateOneProduct);
 
 router.get('/:id', productsController.getOneProduct);
-
-router.put('/:id', productsController.updateOneProduct);
 
 router.delete('/:id', productsController.deleteOneProduct);
 

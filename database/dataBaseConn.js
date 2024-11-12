@@ -1,21 +1,19 @@
 const mysql = require('mysql');
 
 const conexion = mysql.createConnection({
-    host: 'localhost',
+    host: '192.168.20.26',
     user: 'root',
     password: '',
     database: 'tienda'
 });
 
-
 conexion.connect((error) => {
     if (error) {
         console.error('El error de conexion es : ' + error);
-        return
+        return;
     }
-    console.log('!Conectado a la BD MySQL!');
+    console.log('¡Conectado a la BD MySQL!');
 });
-
 
 conexion.query(
     `CREATE TABLE IF NOT EXISTS usuarios (
@@ -41,14 +39,13 @@ conexion.query(
     marca varchar(255) NOT NULL,
     imagen blob NOT NULL,
     id_usuario int(11) NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)       
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE       
   );`,
     (err) => {
         if (err) throw err;
         console.log("Tabla 'productos' creada o verificada");
     }
 );
-
 
 conexion.query(
     `CREATE TABLE IF NOT EXISTS calificacion (
@@ -58,12 +55,12 @@ conexion.query(
     id_producto int(11) NOT NULL, 
     id_usuario int(11) NOT NULL,
     fecha datetime NOT NULL DEFAULT current_timestamp(),
-    FOREIGN KEY (id_producto) REFERENCES productos(id) ,      
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)       
+    FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE CASCADE,      
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE       
     );`, (error) => {
     if (error) throw error;
     console.log("Tabla 'calificacion' creada o verificada");
 }
 );
 
-module.exports = conexion
+module.exports = conexion;
