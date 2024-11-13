@@ -13,11 +13,16 @@
     document.addEventListener('DOMContentLoaded', function () {
         if(document.cookie.split('=')[0] === 'Usuario'){
             document.getElementById('loginDetails').classList.remove('d-none');
-            document.getElementById('send-review').classList.remove('d-none');
+            if (document.getElementById('send-review')){
+                document.getElementById('send-review').classList.remove('d-none');
+
+            }
             
         }else{
             document.getElementById('loginButtons').classList.remove('d-none');
-            document.getElementById('warning-nologin').classList.remove('d-none');
+            if (document.getElementById('warning-nologin')){
+                document.getElementById('warning-nologin').classList.remove('d-none');
+            }
         }
 
         document.getElementById('logOut').addEventListener('click', function (){                

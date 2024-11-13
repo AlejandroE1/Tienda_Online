@@ -142,3 +142,11 @@ section.text-center p {
         height: 250px;
     }
 }
+
+.homebutton {
+    width: 10px;
+    display: fixed;
+    position: absolute;
+    bottom: 40px;
+    right: 300px;
+}
