@@ -1,4 +1,4 @@
-# Hola 👋 Bienvenido a ReseñaPlus 
+# Hola 👋 Bienvenido a ReseñaPlus.
 
 ## ✨ Guía de interacción ✨
 ReseñaPlus es el proyecto final del Bootcamp de Talento Tech Colombia, realizado por el equipo cuyos integrantes se mencionan al final. El proyecto se basa en una tienda de reseñas de productos, con varias funcionalidades descritas a continuación: 
