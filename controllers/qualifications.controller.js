@@ -38,7 +38,7 @@ exports.createOneQualification = (req, res) => {
                 //return res.status(201).json({ success: true, message: "Calificación guardada de manera correcta", redirectTo: `/products${productId}` });
             });
     } else {
-        res.json({ message: "Campos incompletos" });
+        res.redirect(`/products/${productId}`);
     }
 };
 
@@ -86,7 +86,7 @@ exports.updateOneQualification = (req, res) => {
             }
         );
     } else {
-        res.json({ message: "Campos incompletos" });
+        return null;
     }
 };
 

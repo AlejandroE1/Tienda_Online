@@ -13,9 +13,13 @@
     document.addEventListener('DOMContentLoaded', function () {
         if(document.cookie.split('=')[0] === 'Usuario'){
             document.getElementById('loginDetails').classList.remove('d-none');
+            document.getElementById('send-review').classList.remove('d-none');
+            
         }else{
             document.getElementById('loginButtons').classList.remove('d-none');
+            document.getElementById('warning-nologin').classList.remove('d-none');
         }
+
         document.getElementById('logOut').addEventListener('click', function (){                
             document.cookie='Usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
             window.location.href = '/products';

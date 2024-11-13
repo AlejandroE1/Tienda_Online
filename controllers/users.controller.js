@@ -156,14 +156,16 @@ exports.deleteOneUser = (req, res) => {
 // Función para obtener los productos de un usuario
 exports.productsUser = (req, res) => {
     const cookies = cookie.parse(req.headers.cookie || '');
-    const userId = cookies['Usuario'] || '';    
+    const userId = cookies['Usuario'] || '';
+    if (userId === ""){
+        return res.redirect(`/products`);
+    }   
     const sql = "SELECT * FROM productos WHERE id_usuario = ?";
     
     conexion.query(sql, [userId], (err, result) => {
         if (err) {
             res.status(500).send("Error al encontrar producto");
-            return;
-        }
+            }
 
         // Convertir BLOB a base64
         result = result.map(product => {

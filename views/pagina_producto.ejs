@@ -26,9 +26,16 @@
         <% } %>
     </div>
     <div class="main-text row align-items-center" style="height: 30vh; color: #444444;">
+        <% if (product.califProm) { %>
         <div class="col-6 text-center display-3">
-            <%= product.califProm %>
+            <%= product.califProm %> ★
         </div>
+        
+        <% } else { %>
+        <div class="col-6 text-center display-3">
+           -
+        </div>
+        <% } %>
         <div class="col-6 text-center display-4">            
             <strong>$<%= product.valor %></strong>
         </div>
@@ -87,10 +94,16 @@
         id="quealificationDetails"
         name="quealificationDetails"
     ></textarea>
-
+        <div class="d-none" id="send-review">
     <button class="submit-button" onclick="submitReview()">
         Añadir calificación
     </button>
+    </div>
+
+    <div class="d-none" id="warning-nologin">
+        <p>Para enviar una calificacion debes logearte primero</p>
+    </div>
+
 </form>
 </div>
 

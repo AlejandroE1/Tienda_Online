@@ -6,7 +6,7 @@ const path = require('path');
 
 // Función para obtener todos los productos
 exports.getAllproducts = (req, res) => {
-    conexion.query('SELECT * FROM productos', (error, results) => {
+    conexion.query("SELECT id, nombre_producto, descrip_producto, marca, imagen, id_usuario, FORMAT(valor,'de_DE') as valor FROM productos", (error, results) => {
         if (error) {
             throw error;
         } else {
@@ -62,7 +62,7 @@ exports.createOneProduct = (req, res) => {
 exports.getOneProduct = (req, res) => {
     const { id } = req.params;
 
-    const sqlProduct = "SELECT *, (select ROUND(AVG(calificacion),1) from tienda.calificacion where id_producto = ?) as califProm FROM productos WHERE id = ?";
+    const sqlProduct = "SELECT id, nombre_producto, descrip_producto, marca, imagen, id_usuario, FORMAT(valor,'de_DE') as valor, (select ROUND(AVG(calificacion),1) from tienda.calificacion where id_producto = ?) as califProm FROM productos where id= ?";
     const sqlQualifications = `
         SELECT calificacion.*, usuarios.nickname 
         FROM calificacion 
