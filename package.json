@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "ReseñaPlus es el proyecto final del Bootcamp de Talento Tech Colombia, realizado por el equipo cuyos integrantes se mencionan al final. El proyecto se basa en una tienda de reseñas de productos, con varias funcionalidades descritas a continuación:",
   "dependencies": {
-    "cookie": "^1.0.1",
+    "cookie": "^0.5.0",
     "crypto": "^1.0.1",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
